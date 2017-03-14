@@ -4,6 +4,8 @@
 var express = require('express');
 var ParseServer = require('parse-server').ParseServer;
 var path = require('path');
+let uploadkml = require('./app1');
+
 
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 
@@ -44,6 +46,8 @@ app.get('/', function(req, res) {
 app.get('/test', function(req, res) {
   res.sendFile(path.join(__dirname, '/public/test.html'));
 });
+
+app.use('/uploadkml', app1);
 
 var port = process.env.PORT || 1337;
 var httpServer = require('http').createServer(app);
